@@ -14,28 +14,63 @@
 
     <div class="container">
         <h1 class="title">Cupcakes Revenues Calculator</h1>
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Basic Cupcakes</label>
-                <input class="form-control" type="file" id="basic-file">
-            </div>
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Delux Cupcakes</label>
-                <input class="form-control" type="file" id="delux-file">
-            </div>
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Total Revenues Per Day</label>
-                <input class="form-control" type="file" id="total-file">
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary" id="submit-btn">Calculate</button>
+        <div id="upload">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Basic Cupcakes</label>
+                    <input class="form-control" type="file" id="basic-file">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Delux Cupcakes</label>
+                    <input class="form-control" type="file" id="delux-file">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Total Revenues Per Day</label>
+                    <input class="form-control" type="file" id="total-file">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" id="submit-btn">Calculate</button>
+                </div>
             </div>
         </div>
+        <div id="loader" style="display: none;">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="result">
+            <h4>Basic Revenues</h4>
+            <div class="d-flex flex-row justify-content-evenly">
+                <div class="d-flex flex-column">
+                    <h5>Yearly</h5>
+                    <table id="basic-yearly-revenue" class="table">
+                        <tr>
+                            <th>Year</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="d-flex flex-column">
+                    <h5>Monthly</h5>
+                    <table id="basic-monthly-revenue" class="table">
+                        <tr>
+                            <th>Month</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="index.js"></script>
 </body>
 

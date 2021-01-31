@@ -1,3 +1,11 @@
 .title{
     text-align: center;
 }
+
+#result{
+    display: none;
+}
+
+table {
+    margin: 20px;
+}
