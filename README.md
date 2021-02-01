@@ -1,10 +1,10 @@
-# cup-cakes-revenues
+# Cupcakes Revenues Calculator
 
-## prerequisites
+## Prerequisites
 
 install NodeJS
 
-## installation
+## Installation
 
 1. Clone the project.
 2. Go to the project directory and run the following commands in terminal:
@@ -13,7 +13,7 @@ install NodeJS
 3. Go to http://localhost:3000 
 4. Try it using the 3 test files in docs/files directory.
 
-## Next steps
+## Next
 
 - Add Charts 
 - Refactor the code
