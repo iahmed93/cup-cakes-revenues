@@ -28,7 +28,7 @@ const splitLines = (fileString) => {
 
 const convertToDateToNumberMap = (numbers) => {
     const dateToNumberMap = {};
-    for(let i = numbers.length, day = 0; i >= 0; i--, day++){
+    for(let i = numbers.length-1, day = 0; i >= 0; i--, day++){
         const date = moment().subtract(day, 'days').format("MM-DD-YYYY");
         dateToNumberMap[date] = Number.parseFloat(numbers[i]);
     }

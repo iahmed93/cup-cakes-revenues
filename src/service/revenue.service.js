@@ -4,7 +4,7 @@ const PRICES = require('../constant/prices');
 module.exports = {
 
     async calculateBasicRevenueTotals(dateToNumbersMap) {
-        console.log(dateToNumbersMap)
+        // console.log(dateToNumbersMap)
         const basicRevenues = {
             yearly: {},
             monthly: {},
@@ -32,11 +32,11 @@ module.exports = {
             }
             basicRevenues.weekly[week] += dayRevenue;
         }
-        console.log(basicRevenues);
+        // console.log(basicRevenues);
         return basicRevenues;
     },
     async calculateDeluxeRevenueTotals(dateToNumbersMap) {
-        console.log(dateToNumbersMap)
+        // console.log(dateToNumbersMap)
         const deluxeRevenues = {
             yearly: {},
             monthly: {},
@@ -64,11 +64,11 @@ module.exports = {
             }
             deluxeRevenues.weekly[week] += dayRevenue;
         }
-        console.log(deluxeRevenues);
+        // console.log(deluxeRevenues);
         return deluxeRevenues;
     },
     async calculateDailyTotalRevenuesTotals(dateToNumbersMap) {
-        console.log(dateToNumbersMap)
+        // console.log(dateToNumbersMap)
         const dailyTotalRevenues = {
             yearly: {},
             monthly: {},
@@ -96,7 +96,7 @@ module.exports = {
             }
             dailyTotalRevenues.weekly[week] += dayRevenue;
         }
-        console.log(dailyTotalRevenues);
+        // console.log(dailyTotalRevenues);
         return dailyTotalRevenues;
     },
 

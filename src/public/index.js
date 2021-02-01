@@ -4,9 +4,19 @@ document.querySelector('#submit-btn').addEventListener('click', () => {
   document.querySelector('#loader').style.display = "block";
   setTimeout(() => {
     getRevenues();
-    document.querySelector('#result').style.display = "block";
-    document.querySelector('#loader').style.display = "none";
-  }, 2000);
+  }, 4000);
+});
+
+let currentTabId = '#basic-tab'; 
+
+document.querySelector('#tabs-nav').addEventListener('click', (event) => {
+  event.preventDefault();
+  if (event.target.nodeName == 'A') {
+    const id = event.target.getAttribute('href');
+    document.querySelector(id).style.display = 'block';
+    document.querySelector(currentTabId).style.display = 'none';
+    currentTabId = id;
+  }
 });
 
 const handleFilesUpload = event => {
@@ -34,55 +44,80 @@ const handleFilesUpload = event => {
     });
 }
 
-const showBasicRevenues = (revenues) => {
-  const basicYearlyRevenues = revenues.basic.yearly;
-  const yearlyTablefragment = document.createDocumentFragment();
+const showRevenues = async (revenues) => {
 
-  for (let year in basicYearlyRevenues) {
-    const trElement = document.createElement('tr');
-    const yearTdElement = document.createElement('td');
-    const revenueTdElement = document.createElement('td');
+  //basic
+  //yearly
+  await renderTable(revenues.basic.yearly, 'basic-yearly-revenue', 'YYYY');
 
-    yearTdElement.textContent = year;
-    revenueTdElement.textContent = `$${basicYearlyRevenues[year]}`;
-
-    trElement.appendChild(yearTdElement);
-    trElement.appendChild(revenueTdElement);
-    yearlyTablefragment.appendChild(trElement);
-  }
-  const basicYearlyTable = document.querySelector('#basic-yearly-revenue');
-  basicYearlyTable.appendChild(yearlyTablefragment);
-  
   // monthly
-  const basicMonthlyRevenues = revenues.basic.monthly;
-  const monthlyTablefragment = document.createDocumentFragment();
+  await renderTable(revenues.basic.monthly, 'basic-monthly-revenue', 'MMM-YYYY');
 
-  for (let month in basicMonthlyRevenues) {
+  // weekly
+  await renderTable(revenues.basic.weekly, 'basic-weekly-revenue', 'MMM-DD-YYYY');
+
+  // delux
+  //yearly
+  await renderTable(revenues.deluxe.yearly, 'delux-yearly-revenue', 'YYYY');
+
+  // monthly
+  await renderTable(revenues.deluxe.monthly, 'delux-monthly-revenue', 'MMM-YYYY');
+
+  // weekly
+  await renderTable(revenues.deluxe.weekly, 'delux-weekly-revenue', 'MMM-DD-YYYY');
+
+  //total
+  //yearly
+  await renderTable(revenues.total.yearly, 'total-yearly-revenue', 'YYYY');
+
+  // monthly
+  await renderTable(revenues.total.monthly, 'total-monthly-revenue', 'MMM-YYYY');
+
+  // weekly
+  await renderTable(revenues.total.weekly, 'total-weekly-revenue', 'MMM-DD-YYYY');
+
+}
+
+const renderTable = async (map, tableId, dateFormat) => {
+  const fragment = document.createDocumentFragment();
+  for (let item in map) {
     const trElement = document.createElement('tr');
     const monthTdElement = document.createElement('td');
     const revenueTdElement = document.createElement('td');
 
-    monthTdElement.textContent = moment(month).format('MMM-YYYY');
-    revenueTdElement.textContent = `$${basicMonthlyRevenues[month]}`;
+    monthTdElement.textContent = moment(item).format(dateFormat);
+    revenueTdElement.textContent = `$${map[item]}`;
 
     trElement.appendChild(monthTdElement);
     trElement.appendChild(revenueTdElement);
-    monthlyTablefragment.appendChild(trElement);
+    fragment.appendChild(trElement);
   }
-  const basicMonthlyTable = document.querySelector('#basic-monthly-revenue');
-  basicMonthlyTable.appendChild(monthlyTablefragment);
+  const tableElement = document.querySelector(`#${tableId}`);
+  tableElement.appendChild(fragment);
 }
 
-const getRevenues = async () => {
+const getRevenues = () => {
   fetch('/revenue', {
-    method: 'GET'
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    showBasicRevenues(data);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+      if (data.basic && data.deluxe && data.total) {
+        document.querySelector('#loader').style.display = "none";
+        document.querySelector('#result').style.display = "block";
+        showRevenues(data);
+        // clearInterval(getRevenueInterval);
+      } else {
+        throw new Error('IncompleteData')
+      }
+
+    })
+    .catch(error => {
+      if (error == 'IncompleteData') {
+        console.log('Try Again')
+      }
+      console.error(error);
+    });
 }

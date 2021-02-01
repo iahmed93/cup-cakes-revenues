@@ -42,27 +42,116 @@
         </div>
 
         <div id="result">
-            <h4>Basic Revenues</h4>
-            <div class="d-flex flex-row justify-content-evenly">
-                <div class="d-flex flex-column">
-                    <h5>Yearly</h5>
-                    <table id="basic-yearly-revenue" class="table">
-                        <tr>
-                            <th>Year</th>
-                            <th>Revenue</th>
-                        </tr>
-                    </table>
-                </div>
-                <div class="d-flex flex-column">
-                    <h5>Monthly</h5>
-                    <table id="basic-monthly-revenue" class="table">
-                        <tr>
-                            <th>Month</th>
-                            <th>Revenue</th>
-                        </tr>
-                    </table>
+            <ul class="nav justify-content-center" id="tabs-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#basic-tab">Basic</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#delux-tab">Deluxe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#total-tab">Total</a>
+                </li>
+            </ul>
+            <div id="basic-tab">
+                <h4>Basic Revenues</h4>
+                <div class="d-flex flex-row justify-content-evenly">
+                    <div class="d-flex flex-column">
+                        <h5>Yearly</h5>
+                        <table id="basic-yearly-revenue" class="table">
+                            <tr>
+                                <th>Year</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5>Monthly</h5>
+                        <table id="basic-monthly-revenue" class="table">
+                            <tr>
+                                <th>Month</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5>weekly</h5>
+                        <table id="basic-weekly-revenue" class="table">
+                            <tr>
+                                <th>End of Week</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
+
+            <div id="delux-tab">
+                <h4>Deluxe Revenues</h4>
+                <div class="d-flex flex-row justify-content-evenly">
+                    <div class="d-flex flex-column">
+                        <h5>Yearly</h5>
+                        <table id="delux-yearly-revenue" class="table">
+                            <tr>
+                                <th>Year</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5>Monthly</h5>
+                        <table id="delux-monthly-revenue" class="table">
+                            <tr>
+                                <th>Month</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5>weekly</h5>
+                        <table id="delux-weekly-revenue" class="table">
+                            <tr>
+                                <th>End of Week</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="total-tab">
+                <h4>Total Revenues</h4>
+                <div class="d-flex flex-row justify-content-evenly">
+                    <div class="d-flex flex-column">
+                        <h5>Yearly</h5>
+                        <table id="total-yearly-revenue" class="table">
+                            <tr>
+                                <th>Year</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5>Monthly</h5>
+                        <table id="total-monthly-revenue" class="table">
+                            <tr>
+                                <th>Month</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5>weekly</h5>
+                        <table id="total-weekly-revenue" class="table">
+                            <tr>
+                                <th>End of Week</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>

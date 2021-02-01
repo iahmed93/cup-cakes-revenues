@@ -44,8 +44,8 @@ app.post('/files', cpUpload, async (req, res) => {
   });
   fileService.processTotalFile(totalFile)
   .then(dateToNumbers => revenueService.calculateDailyTotalRevenuesTotals(dateToNumbers))
-  .then(totalRevenues => {
-    totalRevenues.total = totalRevenues;
+  .then(dailyTotalRevenues => {
+    totalRevenues.total = dailyTotalRevenues;
   });
   
   
