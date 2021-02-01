@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-install NodeJS
+Install NodeJS
 
 ## Installation
 
